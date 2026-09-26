@@ -3,6 +3,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse, urlencode
+from xml.etree import ElementTree
 import json, math, os
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -200,6 +201,31 @@ class Handler(BaseHTTPRequestHandler):
             except ValueError as e: self.send_json(422,{"error":str(e)})
             except (RuntimeError,URLError,TimeoutError) as e: self.send_json(503,{"error":str(e) or "Could not reach football-data.org."})
             except Exception: self.send_json(502,{"error":"Could not train predictions from this season's results."})
+        elif path=="/api/standings":
+            try:
+                data=api("/competitions/PL/standings")
+                total=next((standing for standing in data.get("standings",[]) if standing.get("type")=="TOTAL"),None)
+                if not total: raise ValueError("The current Premier League table is not available yet.")
+                self.send_json(200,{"competition":data.get("competition",{"name":"Premier League","code":"PL"}),"season":data.get("season",{}),"standings":total.get("table",[]),"updatedAt":data.get("filters",{}).get("date")})
+            except HTTPError as e:
+                msg="API key rejected or standings are not included in your football-data.org plan." if e.code in (401,403) else "football-data.org returned an error. Please try again shortly."
+                self.send_json(e.code,{"error":msg})
+            except ValueError as e: self.send_json(503,{"error":str(e)})
+            except (RuntimeError,URLError,TimeoutError) as e: self.send_json(503,{"error":str(e) or "Could not reach football-data.org."})
+            except Exception: self.send_json(502,{"error":"Could not load the Premier League table."})
+        elif path=="/api/headlines":
+            try:
+                req=Request("https://feeds.bbci.co.uk/sport/football/premier-league/rss.xml",headers={"User-Agent":"TouchlineFootball/1.0"})
+                with urlopen(req,timeout=18) as response: root=ElementTree.fromstring(response.read())
+                items=[]
+                for item in root.findall("./channel/item")[:20]:
+                    title=item.findtext("title")
+                    link=item.findtext("link")
+                    published=item.findtext("pubDate")
+                    if title and link: items.append({"title":title,"url":link,"publishedAt":published,"source":"BBC Sport"})
+                self.send_json(200,{"headlines":items,"source":"BBC Sport","feed":"Premier League","updatedAt":None})
+            except (URLError,TimeoutError) as e: self.send_json(503,{"error":str(e) or "Could not reach the football news feed."})
+            except Exception: self.send_json(502,{"error":"Could not load recent Premier League headlines."})
         elif path=="/api/health": self.send_json(200,{"model":"linear_regression","ready":True,"hasApiKey":bool(os.environ.get("FOOTBALL_DATA_TOKEN"))})
         else:
             file=os.path.join(ROOT,"index.html" if path=="/" else path.lstrip("/"))

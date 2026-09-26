@@ -6,6 +6,8 @@ The Match schedule page shows upcoming fixtures and completed scores, with a tea
 
 The Win predictions page fits a three-class logistic model from the current season's finished Premier League matches and displays home-win, draw, and away-win probabilities for today's fixtures. If there are no matches today, it shows the next scheduled matches. The JSON endpoint is `GET /api/predictions`.
 
+The Points table page shows the current total standings from football-data.org. The Headlines page lists recent Premier League stories from BBC Sport's RSS feed and links to the publisher for full coverage.
+
 ## Run locally
 
 1. Create an API token at [football-data.org](https://www.football-data.org/client/register).
@@ -43,4 +45,4 @@ The Python API uses only the standard library. The frontend uses React and Vite.
 
 ## Deploy on Vercel
 
-The `api/` directory contains one Vercel Python Function per endpoint: `matches.py`, `players.py`, `predict.py`, and `predictions.py`. In Vercel, select the Vite preset, use `pnpm run build`, and set the output directory to `dist`. Add `FOOTBALL_DATA_TOKEN` in the Vercel project's Environment Variables for Preview and Production, then redeploy. Never commit `.env`.
+The `api/` directory contains one Vercel Python Function per endpoint: `matches.py`, `players.py`, `predict.py`, `predictions.py`, `standings.py`, and `headlines.py`. In Vercel, select the Vite preset, use `pnpm run build`, and set the output directory to `dist`. Add `FOOTBALL_DATA_TOKEN` in the Vercel project's Environment Variables for Preview and Production, then redeploy. Never commit `.env`.
