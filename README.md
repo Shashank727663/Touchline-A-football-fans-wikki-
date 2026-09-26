@@ -40,3 +40,7 @@ football-data.org squad records do not provide reliable individual market values
 Match outcome probabilities are separate from the trade-value regression. They are trained only on finished results from the ongoing season and use each team's pre-match points rate, goal difference rate, scoring and conceding rates, recent form, and home advantage. A multinomial logistic model is used instead of XGBoost because the early-season sample is small; a more flexible boosted model would be prone to overfitting. football-data.org's match feed does not provide xG here, so these are result/form-based probabilities, not xG-based odds. Treat early-season predictions as uncertain.
 
 The Python API uses only the standard library. The frontend uses React and Vite.
+
+## Deploy on Vercel
+
+The files in `api/` expose the local handler as Vercel Python Functions at `/api/players`, `/api/matches`, `/api/predict`, and `/api/predictions`. In Vercel, select the Vite preset, use `pnpm run build`, and set the output directory to `dist`. Add `FOOTBALL_DATA_TOKEN` in the Vercel project's Environment Variables for Preview and Production, then redeploy. Never commit `.env`.
