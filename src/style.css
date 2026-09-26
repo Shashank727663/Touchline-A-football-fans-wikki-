@@ -7,3 +7,124 @@
 .prediction-heading h1{max-width:640px}.prediction-overview{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border:1px solid #e3e8df;border-radius:11px;margin:24px 0 13px}.prediction-overview>div{display:flex;flex-direction:column;gap:7px;padding:16px 18px;border-right:1px solid #edf0eb}.prediction-overview>div:last-child{border-right:0}.eyebrow{font:10px 'DM Mono',monospace;letter-spacing:.8px;color:#809087}.prediction-overview b{font:700 14px Manrope,sans-serif;color:#21382c}.prediction-overview small{font-size:10px;color:#849087}.prediction-callout{display:flex;gap:10px;align-items:flex-start;padding:13px 15px;background:#f1f3eb;border:1px solid #e1e7d9;color:#657166;border-radius:9px;margin-bottom:22px}.prediction-callout>span{background:#dfe8d5;color:#5d794c;width:19px;height:19px;display:grid;place-items:center;border-radius:50%;font:600 11px Manrope;flex:0 0 auto}.prediction-callout p{font-size:11px;line-height:1.6;margin:0}.prediction-callout b{color:#3c5141}.prediction-section-title{display:flex;justify-content:space-between;align-items:end;margin:0 0 12px}.prediction-section-title h2{font:700 17px Manrope;margin:0 0 4px;letter-spacing:-.3px}.prediction-section-title p{font-size:11px;color:#718078;margin:0}.prediction-list{display:flex;flex-direction:column;gap:12px}.prediction-card{background:#fff;border:1px solid #e3e8df;border-radius:12px;padding:17px 19px;box-shadow:0 2px 7px #263d3007}.prediction-match-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.prediction-match-head>div{display:flex;align-items:center;gap:9px}.prediction-match-head>div>span{font:10px 'DM Mono',monospace;color:#52665b}.prediction-match-head small{font-size:10px;color:#8a968e;border-left:1px solid #e3e8df;padding-left:9px}.prediction-tag{font:9px 'DM Mono',monospace;color:#63854f;background:#eff5e9;padding:6px 8px;border-radius:5px}.probability-teams{display:grid;grid-template-columns:1fr .7fr 1fr;gap:8px;align-items:stretch}.probability-team{display:grid;grid-template-columns:29px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:8px;padding:10px 11px;border:1px solid transparent;border-radius:9px}.probability-team img{grid-column:1;grid-row:1 / span 2;width:27px;height:27px;object-fit:contain}.probability-team b{grid-column:2;grid-row:1;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.probability-team strong{grid-column:2;grid-row:2;font:700 19px Manrope;color:#43594b;letter-spacing:-.4px;margin-top:2px}.probability-team small{grid-column:1 / -1;font:9px 'DM Mono',monospace;color:#94a097;letter-spacing:.6px;margin-top:8px}.draw-team{grid-template-columns:1fr;text-align:center;border-left:1px solid #edf0eb;border-right:1px solid #edf0eb;border-radius:0}.draw-team b,.draw-team strong{grid-column:1}.draw-team small{grid-column:1}.probability-team.most-likely{background:#f4f8ef;border-color:#e5eddd}.probability-team.most-likely strong{color:#234c34}.probability-bar{height:6px;display:flex;border-radius:9px;overflow:hidden;gap:2px;margin-top:12px;background:#f3f4f1}.probability-bar span:first-child{background:#629052}.probability-bar span:nth-child(2){background:#c8d5b9}.probability-bar span:nth-child(3){background:#9baabd}.prediction-verdict{font-size:10px;color:#87938b;margin-top:11px}.prediction-verdict b{color:#466b3c}.prediction-disclaimer{font-size:10px;color:#89948d;margin-top:15px;line-height:1.5}
 @media(max-width:700px){.prediction-heading{gap:10px}.prediction-overview{grid-template-columns:1fr}.prediction-overview>div{border-right:0;border-bottom:1px solid #edf0eb;padding:12px 14px}.prediction-overview>div:last-child{border-bottom:0}.prediction-card{padding:14px 12px}.prediction-match-head{align-items:flex-start;gap:7px}.prediction-match-head>div{align-items:flex-start;flex-direction:column;gap:5px}.prediction-match-head small{border:0;padding:0}.probability-teams{grid-template-columns:1fr .65fr 1fr;gap:3px}.probability-team{grid-template-columns:21px minmax(0,1fr);column-gap:5px;padding:8px 5px}.probability-team img{width:20px;height:20px}.probability-team b{font-size:9px}.probability-team strong{font-size:16px}.probability-team small{font-size:8px}.draw-team{grid-template-columns:1fr}.prediction-callout p{font-size:10px}}
 @media(max-width:700px){.matches-heading{align-items:flex-start}.schedule-toolbar{align-items:stretch;flex-direction:column}.team-filter{width:100%}.match-card-main{grid-template-columns:75px minmax(130px,1fr);gap:12px;padding:13px}.match-card-meta{grid-column:2;flex-direction:row;justify-content:space-between;align-items:center}.match-events{padding:10px 13px;flex-direction:column;gap:8px}.goal-events{max-width:100%}.motm-unset{align-self:flex-end}.matches-page .page-heading h1{font-size:28px}}
+
+/* Touchline visual refresh: Premier League inspired aubergine and lime palette. */
+:root {
+  color: #211a25;
+  background: #f7f6f8;
+  --pl-purple: #37003c;
+  --pl-purple-soft: #5b1761;
+  --pl-lime: #e5ff00;
+  --pl-line: #e8e4e9;
+  --pl-muted: #77717c;
+  --pl-paper: #fff;
+}
+body { background: #f7f6f8; }
+.app-shell { grid-template-columns: 248px minmax(0, 1fr); }
+.sidebar {
+  position: sticky; top: 0; height: 100vh; min-height: 600px;
+  padding: 30px 18px 22px;
+  background: radial-gradient(ellipse at 0 0, #5a1b61 0, transparent 40%), var(--pl-purple);
+}
+.brand { font-size: 20px; letter-spacing: -.8px; }
+.brand-mark {
+  width: 36px; height: 36px; border-radius: 12px; background: var(--pl-lime);
+  color: var(--pl-purple); font-size: 20px; box-shadow: 0 4px 14px #e5ff0030;
+}
+.side-label { margin: 54px 12px 13px; color: #c5a9c8; font-size: 9px; }
+.nav-item { border-radius: 9px; padding: 12px 13px; color: #eee5ef; font-size: 12px; transition: background .18s, color .18s; }
+.nav-item.active { background: #ffffff1b; color: var(--pl-lime); box-shadow: inset 3px 0 var(--pl-lime); }
+.nav-item:not(.active):hover { background: #ffffff12; }
+.side-status { color: #d4c3d6; border-color: #ffffff25; }
+.side-status i { background: var(--pl-lime); box-shadow: 0 0 0 4px #e5ff001c; }
+.side-status span { color: #bfaac2; }
+.main-content { max-width: 1440px; padding: 34px clamp(26px, 5vw, 72px) 64px; }
+.topline { margin-bottom: 26px; }
+.breadcrumb { color: #817987; font-size: 11px; }
+.breadcrumb b { color: var(--pl-purple); }
+.competition { color: var(--pl-purple); border-color: #e9e1eb; background: #fff; font-size: 9px; letter-spacing: .45px; }
+.competition:before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--pl-lime); margin: 0 7px 0 0; box-shadow: 0 0 0 2px var(--pl-purple); }
+.page-switcher { display: none; }
+.page-heading { margin-bottom: 28px; }
+.page-heading h1 { color: var(--pl-purple); font-size: clamp(30px, 3vw, 39px); letter-spacing: -1.9px; }
+.page-heading p { color: var(--pl-muted); font-size: 13px; }
+.model-badge { background: #f0e8f1; color: var(--pl-purple); border: 1px solid #e9dfea; border-radius: 999px; font-size: 9px; padding: 9px 13px; }
+.workspace-grid { grid-template-columns: minmax(360px, 1.08fr) minmax(330px, .92fr); gap: 18px; }
+.card, .match-card, .prediction-card, .prediction-overview, .matches-message {
+  border: 1px solid var(--pl-line); border-radius: 15px; background: var(--pl-paper);
+  box-shadow: 0 5px 18px #29152f08;
+}
+.card { padding: 26px; }
+.card-header { margin-bottom: 24px; }
+.card-header h2 { color: var(--pl-purple); font-size: 16px; }
+.card-header span { color: #968e99; font-size: 9px; letter-spacing: .55px; }
+.field-label { color: #403844; font-size: 11px; }
+.search-wrap>input, .number-field>input { border-color: #e4dfe6; border-radius: 9px; background: #fcfbfc; }
+.search-wrap>input:focus, .number-field>input:focus { border-color: #8a4c8e; box-shadow: 0 0 0 3px #f0e5f1; }
+.suggestions { border-color: #e7e1e8; border-radius: 11px; }
+.suggestion:hover { background: #f7f2f8; }
+.selected-player { background: #f8f4f8; border-color: #eee6ef; }
+.primary-button { background: var(--pl-purple); border-radius: 9px; padding: 12px 18px; box-shadow: 0 5px 12px #37003c20; }
+.primary-button:hover:not(:disabled) { background: #54135a; transform: translateY(-1px); }
+.reset-button:hover { color: var(--pl-purple); }
+.source-line a, .matches-footer a { color: #6b2571; }
+.result-card { min-height: 368px; }
+.result-card:before { background: radial-gradient(circle, #f1e7f3, #faf8fb 66%, transparent 67%); }
+.result-heading b { color: var(--pl-purple); }
+.empty-result>div { width: 58px; height: 58px; margin: auto; display: grid; place-items: center; border-radius: 18px; background: #f4edf5; opacity: 1; font-size: 25px; }
+.empty-result h3 { color: var(--pl-purple); }
+.value { color: var(--pl-purple); }
+.model-note { color: #817a85; }
+.info-grid { gap: 16px; }
+.info-card { background: #f1ebf2; border: 1px solid #e8dfea; border-radius: 12px; padding: 18px 19px; }
+.info-card>span { color: #6d4771; }
+.info-card p { color: #5c5360; }
+.schedule-tabs { background: #f0ebf1; border: 1px solid #e9e2eb; border-radius: 10px; }
+.schedule-tabs button { padding: 9px 16px; }
+.schedule-tabs button.selected, .page-switcher button.selected { background: var(--pl-purple); color: var(--pl-lime); box-shadow: 0 3px 8px #37003c20; }
+.team-filter { border-color: #e6e0e7; border-radius: 9px; }
+.motm-notice, .prediction-callout { background: #f4eff5; border-color: #e9dfeb; color: #6c626f; border-radius: 11px; }
+.motm-notice b, .prediction-callout b { color: var(--pl-purple); }
+.match-card { transition: transform .16s, box-shadow .16s; }
+.match-card:hover, .prediction-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px #29152f0d; }
+.match-date b, .match-team-name { color: #302635; }
+.status-pill { background: #f0e9f1; color: #67316d; }
+.status-pill.live { background: #fff0f1; color: #bc3151; }
+.live-match { border-color: #edced7; }
+.prediction-overview { overflow: hidden; }
+.prediction-overview>div { padding: 19px 20px; }
+.eyebrow { color: #837789; }
+.prediction-overview b { color: var(--pl-purple); }
+.prediction-card { transition: transform .16s, box-shadow .16s; }
+.prediction-tag { color: var(--pl-purple); background: #f1eaf2; }
+.probability-team.most-likely { background: #f5f8e6; border-color: #e6ecc5; }
+.probability-team.most-likely strong, .prediction-verdict b { color: #596500; }
+.probability-bar span:first-child { background: var(--pl-purple); }
+.probability-bar span:nth-child(2) { background: #ddd2df; }
+.probability-bar span:nth-child(3) { background: #c4c8d2; }
+.matches-message.error button { background: var(--pl-purple); }
+.matches-footer { line-height: 1.7; }
+button, a, input { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #ba9cbe; outline-offset: 2px; }
+@media (max-width: 900px) {
+  .app-shell { grid-template-columns: 70px minmax(0, 1fr); }
+  .sidebar { padding: 24px 12px; }
+  .nav-item.active { box-shadow: inset 0 -3px var(--pl-lime); }
+  .page-switcher { display: flex; margin: -8px 0 24px; padding: 4px; background: #eee8ef; border-radius: 10px; width: fit-content; }
+  .page-switcher button { padding: 9px 12px; }
+}
+@media (max-width: 700px) {
+  .sidebar { position: relative; height: 62px; min-height: 0; padding: 12px 17px; background: var(--pl-purple); }
+  .brand-mark { border-radius: 11px; }
+  .main-content { padding: 23px 16px 40px; }
+  .topline { margin-bottom: 24px; }
+  .competition { font-size: 8px; padding: 7px 9px; }
+  .page-switcher { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; margin: 0 0 24px; gap: 2px; }
+  .page-switcher button { padding: 10px 4px; font-size: 10px; white-space: nowrap; }
+  .page-heading h1 { font-size: 30px; letter-spacing: -1.3px; }
+  .page-heading p { line-height: 1.55; }
+  .card { padding: 20px; }
+  .workspace-grid { gap: 14px; }
+  .result-card { min-height: 320px; }
+  .info-grid { gap: 11px; }
+}
