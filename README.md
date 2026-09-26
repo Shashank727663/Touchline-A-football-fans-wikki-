@@ -43,4 +43,4 @@ The Python API uses only the standard library. The frontend uses React and Vite.
 
 ## Deploy on Vercel
 
-The files in `api/` expose the local handler as Vercel Python Functions at `/api/players`, `/api/matches`, `/api/predict`, and `/api/predictions`. In Vercel, select the Vite preset, use `pnpm run build`, and set the output directory to `dist`. Add `FOOTBALL_DATA_TOKEN` in the Vercel project's Environment Variables for Preview and Production, then redeploy. Never commit `.env`.
+`api/index.py` exposes all app endpoints under `/api/*` as one Vercel Python Function, delegating to the shared local handler. In Vercel, select the Vite preset, use `pnpm run build`, and set the output directory to `dist`. Add `FOOTBALL_DATA_TOKEN` in the Vercel project's Environment Variables for Preview and Production, then redeploy. Never commit `.env`.
